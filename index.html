@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+
+  const arr = ['Sirf ek Allah ko Khuda manna aur uske ilawa kisi ki bhi ibadat na karna, Kufr aur Shirk na karna',
+    'Farz Namazen (Nifl Namzen) Parhna ',
+    'Farz Roze (Nifli Roze) rakhna',
+    'Zakat (Sadqa) dena',
+    'Haj (Umrah) karna',
+    'Dunia (maal, dolat, shohrat, aurat etc.) ko Akhirat se ziyada ahmiyat dena',
+    'Saare nabiyon, aasmani kitabon, farishton ,jannat-dozakh, marne ke baad dobara zinda hone aur aakhirat par imaan laana',
+    'Kisi ka jaan boojh kar najzyaz qatal karna.',
+    'Shohar ki ataat na karna , Biwi / Biwiyon ke saath na insafi karna, Bina jayaz vajah ke aurat ko talaq dena',
+    'Deen par na chalna ya usko apni auqat ke hisaab se dusron tak na ponhchana',
+    'Kanjoosi , maal ko allah ke raste me kharch na karna',
+    'Quran ke ilm ko kamai ka zariya banana.',
+    'Kharred-o-farokht ya kaam imandari se karna. Pura tolna aur sahi maal dena, kaam / business ko jhoot bolkar chalana.',
+    'Maan baap ki na farmani karna, unka khayal na rakhna, Buri baat karna, unka dil dukhana',
+    'Rishwat lena ya dena, kaam me beimaani karna',
+    'Kisi bhi trah ka Nasha karna (sharab, Afeem)',
+    'Jhooti gawahi dena, ghalat faisla karna, Insaaf na karna, jaante hue sach chupana',
+    'Kisi par Lanat karna',
+    'Kisi ka koi bhi Haq marna',
+    'Safai suthrai rakhna',
+    'Jhoot bolna , Jhooti Qasam khana ',
+    'Rishtedaron se talluq torna ya unko satana',
+    'Kisi se najaiz talluq rakhna , Kisi se zina kari karna',
+    'Kisi ki burai / ghibat / badgumani karna',
+    'Taqat hote hue bhi burai ya ghalat baat ko na rokna ',
+    'Kisi ki zameen par zara sa bhi najayaz qabza karna / Jaydad ka sahi batwara na karna ya hissa na dena',
+    'Dikhawa, riyakari, takabbur karna.',
+    'Sood lena, dena, dilana',
+    'Chori karna',
+    'Khudkushi karna',
+    'Nokar ya Mazdoor ki kamai waqt per na dena, uspar zulm karna, pareshaan karna',
+    'Achhe Akhlaq - Madad karna, qarz chukana, Achhe se pesh aana, Mahmaan nawazi karna, Rehemdili karna, har mamle me imandari baratna, etc.',
+    'Sabr karna, Maaf / Ghaltiyan nazarandaaz karna',
+    'Bure akhlaq aur buri niyat rakhna jisse logon ko takleef ponhche, Vada khilafi karna, Gali dena etc.',
+    'Halal cheezen haram karna ya haram rizq khana ya kamana, Haram Kamai karna',
+    'Yateem se na insafi karna, uske paise marna',
+    'Bina saboot ke kisi par ilzam lagana.',
+    'Kisi se qarz lekar na chukana ya zarooratmand ki khane se ya maal se apni haisiyat ke hisaab se madad na karna.',
+    'Kisi insaan per zulm karna, peetna, Apne oopar hue zulm se zyada badla lena',
+    'Padosiyon se achha bartao na karna ya satana ',
+    'Quran ko samajh kar parhna, Deeni ilm hasil karna',
+    'Allah ka zikr karna, Tareef karna, Nabi ki sunnat par amal karna, Dua karna',
+    'Allah se maghfirat mangna, toba karna',
+  ];
+  function makeForm() {
+    var data = '';
+
+    data += '<TABLE style="border:2px solid black" >';
+    data += '<TH  style="border:1px solid black;background-color:lightseagreen" >Question</TH>';
+    data += '<TH  style="border:1px solid black;background-color:lightseagreen" >YES</TH>';
+    data += '<TH  style="border:1px solid black;background-color:lightseagreen" >MAYBE</TH>';
+    data += '<TH  style="border:1px solid black;background-color:lightseagreen" >NO</TH>';
+    for (var i = 0; i < arr.length; i++) {
+
+      data += '<TR style="border:1px solid black" >';
+
+      data += '<TD  style="border:1px solid black; padding:10px" >' + arr[i].trim() + '</TD>';
+
+      data += '<TD  style="border:1px solid black; padding:10px" > <input type="radio" id="q' + i + 'Y" name="q' + i + '" value="Y" onclick="javascript:calculate();" >';
+      data += ' <label for="q' + i + 'Y">YES</label></TD>';
+
+      data += '<TD  style="border:1px solid black; padding:10px" > <input type="radio" id="q' + i + 'M" name="q' + i + '" value="M" onclick="javascript:calculate();" >';
+      data += ' <label for="q' + i + 'M">Maybe</label></TD>';
+
+      data += '<TD  style="border:1px solid black; padding:10px" > <input type="radio" id="q' + i + 'N" name="q' + i + '" value="N" onclick="javascript:calculate();" >';
+      data += ' <label for="q' + i + 'N">NO</label></TD>';
+
+      data += '</TR>';
+
+    }
+    data += '</TABLE>';
+    document.getElementById("data").innerHTML = data;
+
+  }
+
+  function calculate() {
+    var a = 0; b = 0; c = 0;
+    var n = arr.length;
+    for (var i = 0; i < arr.length; i++) {
+      var x = document.querySelector('input[name="q' + i + '"]:checked');
+      if (x != null) {
+        switch (x.value) {
+          case 'Y':
+            a++;
+            break;
+          case 'M':
+            b++;
+            break;
+          case 'N':
+            c++;
+            break;
+        }
+      }
+
+    }
+    //console.log("YES : " + a + "  MAYBE : " + b + "   NO : " + c);
+
+    var T = a + (b / 2) - c;
+    //console.log("GRAND TOTAL : " + T);
+    document.getElementById("GT").innerHTML = 'GRAND TOTAL : ' + T;
+
+    var D = (T / n) * 100;
+    //console.log("D : " + D);
+    document.getElementById("D").innerHTML = 'D : ' + D;
+
+  }
+
+  function unhide() {
+    document.getElementById("GT").style.display = '';
+    document.getElementById("D").style.display = '';
+  }
+
+</script>
+
+<body onload="javascript:makeForm();">
+
+  <h1>BEING ISLAMIC MUSLIM</h1>
+
+  <form action="#">
+
+    <div id="data"></div>
+
+    <br>
+    <br>
+    <br>
+    <div style="display: flex;justify-content: center;align-items: center;"> <input type="button" value="submit"
+        onclick="javascript:unhide();" /></div>
+
+
+    <br>
+
+    <div style="display: flex;justify-content: center;align-items: center;">
+      <div id="GT" style="display: none;"></div>
+    </div>
+    <br>
+    <div style="display: flex;justify-content: center;align-items: center;">
+      <div id="D" style="display: none;"></div>
+    </div>
+  </form>
+
+</body>
+
+</html>
